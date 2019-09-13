@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // APPEND TO THE DOM
     beerContainer.insertAdjacentHTML("beforeend", details);
     const foodList = document.getElementById("food-pair");
-
+    // FOOD PAIRING LOOP AND APPEND TO FOOD LIST
     brew.food_pairing.forEach(f => {
       const list = `
             <li>${f}</li>
