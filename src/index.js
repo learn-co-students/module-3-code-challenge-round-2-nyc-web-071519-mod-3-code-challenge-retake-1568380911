@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // debugger
         if (e.target.id === "edit-beer") {
             const foundBeer = beers.find(beer => beer.id === parseInt(h1.id));
+            foundBeer.description = descriptionInput.value;
             fetch(`http://localhost:3000/beers/${foundBeer.id}`, {
                 method: 'PATCH',
                 headers:  {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({description: descriptionInput.value})
+                body: JSON.stringify({description: foundBeer.description})
             });
-            foundBeer.description = descriptionInput.value;
             // .then(rsp => rsp.json())
             // .then(patchedBeer => {
             //     // debugger
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(rsp => rsp.json())
     .then(beersArray => {
         beers = beersArray;
-        console.log(beers);
+        // console.log(beers);
         beers.forEach(beer => {
             const beerBullet = document.createElement("li");
             beerBullet.class = "list-group-item";
